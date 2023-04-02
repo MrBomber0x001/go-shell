@@ -27,6 +27,7 @@ func execCommand(input string) error {
 	switch args[0] {
 	case "cd":
 		if len(args) < 2 {
+			writeToLog("error.log", ErrNoPath.Error())
 			return ErrNoPath
 		}
 		return os.Chdir(args[1])
@@ -49,14 +50,29 @@ func main() {
 	for {
 		dir, err := os.Getwd()
 		if err != nil {
+			writeToLog("error.log", err.Error())
 			handleErr(err)
 		}
 		fmt.Printf("%s:%s:> ", user.Username, dir)
 		input, err := reader.ReadString('\n')
 		// words := strings.Fields(input)
-		handleErr(err)
+		if err != nil {
+			writeToLog("error.log", err.Error())
+			handleErr(err)
+		}
 		if err := execCommand(input); err != nil {
+			writeToLog("error.log", err.Error())
 			fmt.Fprintln(os.Stdout, err)
 		}
 	}
+}
+
+func writeToLog(fname string, data string) {
+	f, err := os.OpenFile(fname, os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		handleErr(err)
+	}
+	defer f.Close()
+	data = fmt.Sprintf("%s \n", data)
+	_, err = f.WriteString(data)
 }

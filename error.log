@@ -1,0 +1,6 @@
+no path providedno path providedexec: "l": executable file not found in $PATHexec: "l": executable file not found in $PATH 
+exec: "s": executable file not found in $PATH 
+exec: "v": executable file not found in $PATH 
+exec: "b": executable file not found in $PATH 
+exec: "y": executable file not found in $PATH 
+exit status 2 
