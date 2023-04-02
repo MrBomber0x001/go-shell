@@ -1,8 +1,13 @@
 ## Intro
 
-Native Shell processor written in Go
+Native Shell processor written in Go, the application is currently in progress!
 
 [![asciicast](https://asciinema.org/a/V4tqMsnHN7qznKuN6iRUzve3a.svg)](https://asciinema.org/a/V4tqMsnHN7qznKuN6iRUzve3a)
+
+## Functionalites
+All of the following commands are implemented natively *without* using `cmd.Execute()`
+
+commands: [cat ls pwd cd grep]
 
 ## Logs
 
