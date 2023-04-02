@@ -4,3 +4,4 @@ exec: "v": executable file not found in $PATH
 exec: "b": executable file not found in $PATH 
 exec: "y": executable file not found in $PATH 
 exit status 2 
+exit status 1 
