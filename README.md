@@ -7,7 +7,7 @@ Native Shell processor written in Go, the application is currently in progress!
 ## Functionalites
 All of the following commands are implemented natively *without* using `cmd.Execute()`
 
-commands: [cat ls pwd cd grep]
+commands: [cat ls pwd cd grep curl find]
 
 ## Logs
 
