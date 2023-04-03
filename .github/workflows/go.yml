@@ -12,10 +12,7 @@ on:
 jobs:
 
   build:
-    runs-on: ${{matrix.os}}
-    strategy:
-        matrix:
-          os: ['ubuntu-latest', 'macOs-latest', 'windows-latest']
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
 
@@ -29,4 +26,13 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+    - name: Build and Push to Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+          image: repo/image
+          tags: v1, latest
+          registry: registry-url.io
+          dockerfile: Dockerfile.ci
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
